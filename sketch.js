@@ -35,7 +35,12 @@ function draw() {
   drawSprites();
   
   generaNumeros();
-  astronauta.x = mouseX;
+  //haciendo que funcione para mouse o para touches
+  if (touches.length > 0) {
+    astronauta.x = touches[0].x;
+  }else {
+    astronauta.x = mouseX; 
+  }
 }
 
 function generaNumeros(){
