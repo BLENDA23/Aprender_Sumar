@@ -105,3 +105,19 @@ function generaNumeros(){
   }
   
 }
+
+function touchStarted() {
+  // Al inicio del toque, registramos la posición x del dedo
+  startX = mouseX;
+}
+
+function touchMoved() {
+  // Cuando se mueve el dedo, calculamos la diferencia en x
+  let dx = mouseX - startX;
+
+  // Actualizamos la posición x del astronauta sumando la diferencia dx
+  astronauta.position.x += dx;
+
+  // Actualizamos la posición x inicial para el siguiente movimiento
+  startX = mouseX;
+}
