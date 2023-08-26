@@ -35,20 +35,15 @@ function draw() {
   drawSprites();
   
   generaNumeros();
+  
   //haciendo que funcione para mouse o para touches
-  if (touches.length > 0) {
-    let dx = touches[0].x - touches[0].x;
-    astronauta.position.x += dx;
-    return false;
-  }else {
-    astronauta.x = mouseX; 
-  }
+ 
 }
 
 function generaNumeros(){
   if(frameCount % 60 === 0){
 
-    var numeros = createSprite(Math.round(random(windowWidth+10,windowHeight-10)),0,20,30);
+    var numeros = createSprite(Math.round(random(windowWidth+50,windowHeight-50)),0,20,30);
     numeros.scale=0.4;
     numeros.velocityY =5;
 
@@ -100,24 +95,15 @@ function generaNumeros(){
     case 15:
       numeros.addImage(n15);
     break;
-
   }
+  astronauta.depth=numeros.depth;
+  //cambiando profundidad de astronauta para que salga sobre los numeros
+  astronauta.depth=astronauta.depth+1;
   }
   
 }
 
-function touchStarted() {
-  // Al inicio del toque, registramos la posición x del dedo
-  startX = mouseX;
-}
-
-function touchMoved() {
-  // Cuando se mueve el dedo, calculamos la diferencia en x
-  let dx = mouseX - startX;
-
-  // Actualizamos la posición x del astronauta sumando la diferencia dx
-  astronauta.position.x += dx;
-
-  // Actualizamos la posición x inicial para el siguiente movimiento
-  startX = mouseX;
+function mouseMoved() {
+  // Esta función se ejecuta cuando el ratón se mueve o el dedo arrastra en la pantalla
+  astronauta.position.x = mouseX;
 }
