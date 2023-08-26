@@ -1,8 +1,11 @@
 var astronauta,astronautaImg;
 var n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15;
-
+var iconoSumasImg,iconoSumas;
+var objetivoSumas=0;
+var puntaje=0;
 function preload(){
   astronautaImg=loadImage("imagenes/astronauta.png");
+  iconoSumasImg=loadImage("imagenes/iconoSumas.png");
   n1=loadImage("imagenes/1.png");
   n2=loadImage("imagenes/2.png");
   n3=loadImage("imagenes/3.png");
@@ -26,17 +29,28 @@ function setup(){
   astronauta=createSprite(width / 2, height-100, 20, 20);
   astronauta.addImage("astronauta",astronautaImg);
   astronauta.scale=0.4;
-  
+
+  iconoSumas=createSprite(width -300, height-650, 20, 20);
+  iconoSumas.addImage("icono de sumas",iconoSumasImg);
+
   
 }
-
+function objetivoSumasF(){
+  objetivoSumas=Math.round(random(10,20));
+}
 function draw() {
   background(0);
   drawSprites();
   
   generaNumeros();
   
-  //haciendo que funcione para mouse o para touches
+  
+  
+  if(objetivoSumas===puntaje){
+    objetivoSumasF();
+  }
+  textSize(50);
+  text(objetivoSumas,width-330,height-570)
  
 }
 
@@ -107,3 +121,5 @@ function mouseMoved() {
   // Esta función se ejecuta cuando el ratón se mueve o el dedo arrastra en la pantalla
   astronauta.position.x = mouseX;
 }
+
+
