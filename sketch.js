@@ -37,7 +37,7 @@ function draw() {
   generaNumeros();
   //haciendo que funcione para mouse o para touches
   if (touches.length > 0) {
-    astronauta.x = touches[0].x;
+    astronauta.position.x = touches[0].x;
   }else {
     astronauta.x = mouseX; 
   }
