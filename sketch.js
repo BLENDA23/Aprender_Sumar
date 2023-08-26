@@ -39,6 +39,7 @@ function draw() {
   if (touches.length > 0) {
     let dx = touches[0].x - touches[0].x;
     astronauta.position.x += dx;
+    return false;
   }else {
     astronauta.x = mouseX; 
   }
