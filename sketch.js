@@ -43,7 +43,7 @@ function draw() {
 function generaNumeros(){
   if(frameCount % 60 === 0){
 
-    var numeros = createSprite(Math.round(random(windowWidth+50,windowHeight-50)),0,20,30);
+    var numeros = createSprite(Math.round(random(50,windowWidth-50)),0,20,30);
     numeros.scale=0.4;
     numeros.velocityY =5;
 
