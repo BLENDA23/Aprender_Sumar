@@ -3,6 +3,8 @@ var n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15;
 var iconoSumasImg,iconoSumas;
 var objetivoSumas=0;
 var puntaje=0;
+var groupNumeros;
+var numeros;
 function preload(){
   astronautaImg=loadImage("imagenes/astronauta.png");
   iconoSumasImg=loadImage("imagenes/iconoSumas.png");
@@ -33,6 +35,7 @@ function setup(){
   iconoSumas=createSprite(width -300, height-650, 20, 20);
   iconoSumas.addImage("icono de sumas",iconoSumasImg);
 
+  groupNumeros=new Group();
   
 }
 function objetivoSumasF(){
@@ -51,71 +54,52 @@ function draw() {
   }
   textSize(50);
   text(objetivoSumas,width-330,height-570)
- 
+
 }
 
-function generaNumeros(){
-  if(frameCount % 60 === 0){
+  function generaNumeros(){
+    if(frameCount % 60 === 0){
 
-    var numeros = createSprite(Math.round(random(80,windowWidth-80)),0,20,30);
-    numeros.scale=0.4;
-    numeros.velocityY =5;
+      numeros = createSprite(Math.round(random(80,windowWidth-80)),0,20,30);
+      numeros.scale=0.4;
+      numeros.velocityY =5;
 
-    var opcion=Math.round(random(1,15));
+      var opcion=Math.round(random(1,15));
 
-  switch (opcion){
-    case 1:
-      numeros.addImage(n1);
-    break;
-    case 2:
-      numeros.addImage(n2);
-    break;
-    case 3:
-      numeros.addImage(n3);
-    break;
-    case 4:
-      numeros.addImage(n4);
-    break;
-    case 5:
-      numeros.addImage(n5);
-    break;
-    case 6:
-      numeros.addImage(n6);
-    break;
-    case 7:
-      numeros.addImage(n7);
-    break;
-    case 8:
-      numeros.addImage(n8);
-    break;
-    case 9:
-      numeros.addImage(n9);
-    break;
-    case 10:
-      numeros.addImage(n10);
-    break;
-    case 11:
-      numeros.addImage(n11);
-    break;
-    case 12:
-      numeros.addImage(n12);
-    break;
-    case 13:
-      numeros.addImage(n13);
-    break;
-    case 14:
-      numeros.addImage(n14);
-    break;
-    case 15:
-      numeros.addImage(n15);
-    break;
+      switch (opcion) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+          numeros.addImage(window['n' + opcion]);
+          numeros.valor = opcion;
+               
+            break;
+        default:
+            // Caso por defecto
+            break;
+      }
+      //cambiando profundidad de astronauta para que salga sobre los numeros
+      groupNumeros.add(numeros);
+
+      astronauta.depth=numeros.depth;
+      astronauta.depth=astronauta.depth+1;
+    
+    }
+    
+    
   }
-  astronauta.depth=numeros.depth;
-  //cambiando profundidad de astronauta para que salga sobre los numeros
-  astronauta.depth=astronauta.depth+1;
-  }
-  
-}
 
 function mouseMoved() {
   // Esta función se ejecuta cuando el ratón se mueve o el dedo arrastra en la pantalla
